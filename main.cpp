@@ -11,13 +11,12 @@
 
 using namespace std;
 vector<string> slice(vector<string> const &v, int  m, int n);
-bool inbounds(int val);
+bool inbounds(int val); //TODO gmp intger here
 int main()
 {
 
   bool good = false;
-
-  int n; //between 1 < n < 2^500
+  int n; //between 1 < n < 2^500 TODO GMP INTEGER HERE
   while(!good)
   {
     cout << "specify n:" << endl;
@@ -39,8 +38,7 @@ int main()
   std::getline(cin, lineval);
   vector<string> first = {};
   istringstream iss(lineval);
-  copy(istream_iterator<string>(iss),
-      istream_iterator<string>(),
+  copy(istream_iterator<string>(iss), istream_iterator<string>(), //CHANGE OUT THE INPUT
       back_inserter(first));
   vector<string> cleaned_first = slice(first, 0, n);
 

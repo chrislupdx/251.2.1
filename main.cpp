@@ -38,7 +38,15 @@ int main()
    cout << endl << "Set 2 elements are: ";
    printSet(set2);
 
+   set_union(set1.begin(), set1.end(), set2.begin(), set2.end(),
+            inserter(setOpcontainer, setOpcontainer.begin()));
 
+   cout << endl << "Union of A and B has " << setOpcontainer.size() << "elements: ";
+   printSet(setOpcontainer);
+   setOpcontainer.clear();
+   mpz_clear(n);
+   mpz_clear(halt);
+    
   //bool good = false;
   //int n; //between 1 < n < 2^500 TODO GMP INTEGER HERE
   //while(!good)
@@ -180,7 +188,7 @@ int main()
   //int val = pow(2, (cleaned_first.size() + cleaned_two.size()));
   //cout << "The cardinality of the power set of the cross product A and B is " << val << endl; 
 
-  //return 1;
+  return 1;
 }
 
 void printSet(set<string>&set1) {

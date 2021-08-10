@@ -103,13 +103,15 @@ int main()
   mpz_clear(total);
 
   //7. cardinatlity of the power set of the cross product of a and b
-  mpz_t card;    
-  mpz_init(card);
-  int base = 2;
-  mpz_ui_pow_ui(card, base, product); //TODO leaks
-
-  gmp_printf("Cardinality of the power set of the cross product of A and B: %Zl\n", card);
-  mpz_clear(card); 
+  //mpz_t card;    
+  //mpz_init(card);
+  //mpz_t base;
+  //mpz_init(base);
+  unsigned long int exp = product;
+  //mpz_pow_ui(card, base, exp); //TODO leaks
+  //gmp_printf("Cardinality of the power set of the cross product of A and B: %Zd\n", card);
+  //mpz_clear(card); 
+  //mpz_clear(base);
 
  return 1;
 }

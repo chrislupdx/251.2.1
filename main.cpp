@@ -106,10 +106,21 @@ int main()
       cout << "(" << A << "," << B << ")" << endl;
     }
   }
+  mpz_clear(total);
 
-  //7. 
+  //7. cardinatlity of the power set of the cross product of a and b
+  
+  //mpz_init(total);
+  //mpz_t base;
+  //mpz_init(base);
+  //mpz_set_ui(base, 2);
+  //mpz_pow_ui(total, base, product);
+  //gmp_printf("Cardinality and of the power set of the cross product of A and B: %Zd\n", total);
 
-  return 1;
+  //mpz_clear(total);
+  //mpz_clear(base);
+ 
+ return 1;
 }
 
 void printSet(set<string>&set1) {

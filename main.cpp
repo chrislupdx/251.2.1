@@ -87,17 +87,17 @@ int main()
     mpz_clear(n);
     mpz_clear(halt);
 
-    //cardinality and roster of the cross product a and b
+    //5. cardinality and roster of the cross product a and b
    
     mpz_t total, a;
     mpz_init(total);
     mpz_set_ui(total, 100);
-    gmp_printf("\n Total is %s is an mpz %Zd \n", total);
+    gmp_printf("print output gpm style. \n input size = %Zd\n", total);
+
     //mpz_init(a); 
     //mpz_set_ui(a, set1.size());
     //mpz_mul_si(total, a ,set2.size());
     //int total = set1.size() * set2.size(); //TODO should this be in gmp SEG FAUILT
-    
     //gmp_printf("Cardinality and roster of teh cross product of A and B: %s is an mpz %Zd\n", total);
     //cout << endl << "Cardinality and roster of the cross prodcut of A and B:" << total << endl; 
     for( string const& A: set1)
@@ -107,17 +107,16 @@ int main()
         cout << "(" << A << "," << B << ")" << endl;
       }
     }
+   
 
-    mpz_clear(total);
-    mpz_clear(a);
+
+
 
     //the cardinality of the power set of the cross product of a and b
-
     //mpz_t pow;
     //mpz_init(pow);
     //whats the base
     //mpz_ui_pow_ui(pow, unsigned long int base, unsinged long int exp);
-
     //, set1s, set2s,base, exp;
     //mpz_init(base);
     //mpz_init(exp);
@@ -138,10 +137,11 @@ int main()
     //mpz_clear(set1s);
     //mpz_clear(set2s);
     //mpz_clear(base);
-
     //int val = pow(3, (set1.size() + set2.size()));
     //cout << "The cardinality of the power set of the cross product of A and B is " << pow << endl;
     //mpz_clear(pow);
+   //mpz_clear(total);
+    //mpz_clear(a);
   return 1;
 }
 

@@ -57,23 +57,19 @@ int main()
   mpz_clear(n);
   mpz_clear(halt);
 
-
   //3
   set_difference(set1.begin(), set1.end(), set2.begin(), set2.end(),
       inserter(setOpcontainer, setOpcontainer.begin()));
-
   cout << endl << "Relative Complement of A nd B has" << setOpcontainer.size() << "elements: ";
   printSet(setOpcontainer);
   setOpcontainer.clear();
   mpz_clear(n);
   mpz_clear(halt);
 
-
    //4. cardinality and roster of the relative complement of b and a
   
   set_difference(set2.begin(), set2.end(), set1.begin(), set1.end(),
       inserter(setOpcontainer, setOpcontainer.begin()));
-
   cout << endl << "Relative Complement of B nd A has" << setOpcontainer.size() << "elements: ";
   printSet(setOpcontainer);
   setOpcontainer.clear();
@@ -83,7 +79,6 @@ int main()
   //5. cardinatliy and roster of the symmetric difference between a and b
   set_symmetric_difference(set1.begin(), set1.end(), set2.begin(), set2.end(),
       inserter(setOpcontainer, setOpcontainer.begin()));
-
   cout << endl << "Symmetric differnce between A and B has" << setOpcontainer.size() << "elements: ";
   printSet(setOpcontainer);
   cout << endl;
@@ -98,7 +93,6 @@ int main()
   int product = set1.size() * set2.size();
   mpz_set_ui(total, product);
   gmp_printf("Cardinality and roster of the cross product of A and B: %Zd\n", total);
-  
   for( string const& A: set1)
   {
     for(string const& B: set2)
@@ -109,17 +103,14 @@ int main()
   mpz_clear(total);
 
   //7. cardinatlity of the power set of the cross product of a and b
-  
-  //mpz_init(total);
-  //mpz_t base;
-  //mpz_init(base);
-  //mpz_set_ui(base, 2);
-  //mpz_pow_ui(total, base, product);
-  //gmp_printf("Cardinality and of the power set of the cross product of A and B: %Zd\n", total);
+  mpz_t card;    
+  mpz_init(card);
+  int base = 2;
+  mpz_ui_pow_ui(card, base, product); //TODO leaks
 
-  //mpz_clear(total);
-  //mpz_clear(base);
- 
+  gmp_printf("Cardinality of the power set of the cross product of A and B: %Zl\n", card);
+  mpz_clear(card); 
+
  return 1;
 }
 

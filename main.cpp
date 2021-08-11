@@ -1,5 +1,6 @@
 #include <iostream>
 #include <algorithm> 
+#include <math.h>
 #include <string>
 #include <gmpxx.h>
 #include <gmp.h>
@@ -31,7 +32,7 @@ int main()
 
   mpz_set_str(n, input.c_str(), 10);
   gmp_printf("print output GMP style. \ninput size - %Zd\n", n);
-  getandFillSet(input, n, halt, set1);
+  getandFillSet(input, n, halt, set1); 
   getandFillSet(input, n, halt, set2);
   cout << endl << "Set 1 elements are: ";
   printSet(set1);
@@ -45,8 +46,6 @@ int main()
   cout << endl << "Intersection of A nd B has" << setOpcontainer.size() << "elements: ";
   printSet(setOpcontainer);
   setOpcontainer.clear();
-  mpz_clear(n);
-  mpz_clear(halt);
 
 //2
   set_union(set1.begin(), set1.end(), set2.begin(), set2.end(),
@@ -54,8 +53,6 @@ int main()
   cout << endl << "Union of A and B has " << setOpcontainer.size() << "elements: ";
   printSet(setOpcontainer);
   setOpcontainer.clear();
-  mpz_clear(n);
-  mpz_clear(halt);
 
   //3
   set_difference(set1.begin(), set1.end(), set2.begin(), set2.end(),
@@ -63,8 +60,6 @@ int main()
   cout << endl << "Relative Complement of A nd B has" << setOpcontainer.size() << "elements: ";
   printSet(setOpcontainer);
   setOpcontainer.clear();
-  mpz_clear(n);
-  mpz_clear(halt);
 
    //4. cardinality and roster of the relative complement of b and a
   
@@ -73,8 +68,6 @@ int main()
   cout << endl << "Relative Complement of B nd A has" << setOpcontainer.size() << "elements: ";
   printSet(setOpcontainer);
   setOpcontainer.clear();
-  mpz_clear(n);
-  mpz_clear(halt);
 
   //5. cardinatliy and roster of the symmetric difference between a and b
   set_symmetric_difference(set1.begin(), set1.end(), set2.begin(), set2.end(),
@@ -83,9 +76,6 @@ int main()
   printSet(setOpcontainer);
   cout << endl;
   setOpcontainer.clear();
-  mpz_clear(n);
-  mpz_clear(halt);
-
   //6. cardinality and roster of the cross product a and b
 
   mpz_t total;
@@ -103,15 +93,18 @@ int main()
   mpz_clear(total);
 
   //7. cardinatlity of the power set of the cross product of a and b
-  //mpz_t card;    
-  //mpz_init(card);
-  //mpz_t base;
-  //mpz_init(base);
-  unsigned long int exp = product;
-  //mpz_pow_ui(card, base, exp); //TODO leaks
-  //gmp_printf("Cardinality of the power set of the cross product of A and B: %Zd\n", card);
-  //mpz_clear(card); 
-  //mpz_clear(base);
+  mpz_t card, base;    
+  int exp = product;
+  mpz_init(card);
+  mpz_init(base);
+  mpz_init_set_ui(base, 2);
+  mpz_pow_ui(card, base, exp); //TODO segfaults here
+  gmp_printf("Cardinality of the power set of the cross product of A and B: %Zd\n", card); //segfaults at this
+  
+  mpz_clear(n);
+  mpz_clear(halt);
+  mpz_clear(card); 
+  mpz_clear(base);
 
  return 1;
 }
